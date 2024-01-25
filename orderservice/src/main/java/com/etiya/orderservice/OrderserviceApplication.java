@@ -14,3 +14,6 @@ public class OrderserviceApplication {
 	}
 
 }
+
+// Netflix Ribbon
+// Cloud Load Balancer
