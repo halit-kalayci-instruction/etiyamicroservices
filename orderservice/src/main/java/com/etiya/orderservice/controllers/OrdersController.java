@@ -11,15 +11,15 @@ import org.springframework.web.reactive.function.client.WebClient;
 @RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
 public class OrdersController {
-    //private final WebClient.Builder webClientBuilder;
+   // private final WebClient.Builder webClientBuilder;
     private final InventoryClient inventoryClient;
     @PostMapping
     public String submitOrder() {
         // ..
-       /* Boolean result = webClientBuilder
+      /* Boolean result = webClientBuilder
                 .build()
                 .get()
-                .uri("http://localhost:8080/api/v1/products",
+                .uri("http://inventoryService/api/v1/products",
                         (uriBuilder -> uriBuilder.queryParam("productId", 5).build()))
                 .retrieve()
                 .bodyToMono(Boolean.class)
