@@ -1,5 +1,6 @@
 package com.etiya.orderservice.controllers;
 
+import com.etiya.orderservice.clients.InventoryClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,10 +11,22 @@ import org.springframework.web.reactive.function.client.WebClient;
 @RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
 public class OrdersController {
-    private final WebClient.Builder webClient;
+    //private final WebClient.Builder webClientBuilder;
+    private final InventoryClient inventoryClient;
     @PostMapping
-    public void submitOrder() {
+    public String submitOrder() {
         // ..
-        //webClient.build().get().uri("").retrieve();
+       /* Boolean result = webClientBuilder
+                .build()
+                .get()
+                .uri("http://localhost:8080/api/v1/products",
+                        (uriBuilder -> uriBuilder.queryParam("productId", 5).build()))
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block(); */
+        Boolean result = inventoryClient.getStockStatus(5);
+        if(result)
+            return "Sipariş başarılı";
+        return "Sipariş başarısız";
     }
 }
