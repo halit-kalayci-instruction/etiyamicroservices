@@ -29,6 +29,17 @@ services:
       - "8181:8181"
     networks:
       - common_network
+  api_gateway:
+    build: ./api-gateway
+    ports:
+      - "8010:8010"
+    depends_on:
+      - discovery-server
+    networks:
+      - common_network
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8181/eureka
+
 
 networks:
   common_network:
