@@ -1,3 +1,6 @@
+docker build -t tag_ismi .
+docker run -d -p 8080:8080 image_ismi
+
 docker compose up -d  -> docker-compose dosyasını terminal bağımsız ayağa kaldırır
 docker compose down -> docker-compose dosyasından oluşan kümeyi kapatır.
 
