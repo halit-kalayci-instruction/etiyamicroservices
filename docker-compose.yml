@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  order-service:
+    image: halitkalayci/orderservice
+    ports:
+      - "8081:8081"
+      - "8082:8081"
+    depends_on:
+      - discovery-server
+  discovery-server:
+    image: halitkalayci/discoveryetiya
+    ports:
+      - "8181:8181"
