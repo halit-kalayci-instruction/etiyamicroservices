@@ -18,11 +18,16 @@ services:
     depends_on:
       - discovery-server
       - postgres
+      - config-service
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8181/eureka
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/Northwind
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=test
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
+      - SPRING_CONFIG_IMPORT=configserver:http://config-service:8888
+    networks:
+      - common_network
+  config-service:
+    build: ./configserver
+    ports:
+      - "8888:8888"
     networks:
       - common_network
   inventory-service:
@@ -31,9 +36,11 @@ services:
       - "8080:8080"
     depends_on:
       - discovery-server
+      - config-service
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8181/eureka
-      - SPRING_APPLICATION_NAME=dockerDeneme
+      - SPRING_CLOUD_CONFIG_PROFILE=dev
+      - SPRING_CONFIG_IMPORT=configserver:http://config-service:8888
     networks:
       - common_network
   discovery-server:

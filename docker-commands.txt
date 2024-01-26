@@ -15,5 +15,3 @@ docker pull postgres => docker hubdan postgres paketini local imagelara ekler
 
 
 Config Server
-DB
-14:30
