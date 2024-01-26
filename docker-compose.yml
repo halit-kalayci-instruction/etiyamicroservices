@@ -8,8 +8,27 @@ services:
       - "8082:8081"
     depends_on:
       - discovery-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8181/eureka
+    networks:
+      - common_network
+  inventory-service:
+    build: ./inventory.service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - discovery-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8181/eureka
+      - SPRING_APPLICATION_NAME=dockerDeneme
+    networks:
+      - common_network
   discovery-server:
-    image: halitkalayci/discoveryetiya
+    build: ./discoveryserver
     ports:
       - "8181:8181"
+    networks:
+      - common_network
 
+networks:
+  common_network:

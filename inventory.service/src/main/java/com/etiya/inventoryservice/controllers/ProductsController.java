@@ -10,4 +10,9 @@ public class ProductsController {
     public boolean checkStock(@RequestParam int productId) {
         return true;
     }
+
+    @PostMapping()
+    public boolean deneme() {
+        return true;
+    }
 }
