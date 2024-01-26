@@ -30,6 +30,9 @@ services:
       - "8888:8888"
     networks:
       - common_network
+    environment:
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/halitkalayci/microservices-configurations.git
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT-LABEL=master
   inventory-service:
     build: ./inventory.service
     ports:
@@ -40,7 +43,7 @@ services:
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8181/eureka
       - SPRING_CLOUD_CONFIG_PROFILE=dev
-      - SPRING_CONFIG_IMPORT=configserver:http://config-service:8888
+      - SPRING_CLOUD_CONFIG_IMPORT=configserver:http://config-service:8888
     networks:
       - common_network
   discovery-server:
