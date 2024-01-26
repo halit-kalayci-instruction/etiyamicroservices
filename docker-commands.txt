@@ -8,3 +8,8 @@ docker compose down -> docker-compose dosyasından oluşan kümeyi kapatır.
 docker push halitkalayci/orderservice -> verilen isimdeki image'ı dockerhub'a gönderir.
 docker tag halitkalayci/orderservice halitkalayci/orderservice:x -> verilen isimdeki image'a tag ekler.
 
+
+
+Config Server
+DB
+14:30
