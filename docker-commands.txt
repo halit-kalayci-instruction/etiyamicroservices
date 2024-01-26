@@ -3,11 +3,15 @@ docker run -d -p 8080:8080 image_ismi
 
 docker compose up -d  -> docker-compose dosyasını terminal bağımsız ayağa kaldırır
 docker compose down -> docker-compose dosyasından oluşan kümeyi kapatır.
+docker compose stop -> docker-compose dosyasından oluşan kümeyi geçici olarak durdurur
+docker compose start -> stop edilen kümeyi başlatır.
 
 
 docker push halitkalayci/orderservice -> verilen isimdeki image'ı dockerhub'a gönderir.
 docker tag halitkalayci/orderservice halitkalayci/orderservice:x -> verilen isimdeki image'a tag ekler.
 
+
+docker pull postgres => docker hubdan postgres paketini local imagelara ekler
 
 
 Config Server
