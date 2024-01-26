@@ -12,3 +12,4 @@ services:
     image: halitkalayci/discoveryetiya
     ports:
       - "8181:8181"
+
